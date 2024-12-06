@@ -4,8 +4,8 @@ import time
 print("Initiating custom file download script, glhf\n")
 
 # Specify path and local filename
-path = "https://s3.amazonaws.com/macchiato.clue.io/builds/LINCS2020/geneinfo_beta.txt" #"https://s3.amazonaws.com/macchiato.clue.io/builds/LINCS2020/level3/level3_beta_trt_misc_n26428x12328.gctx"
-local_filename = "geneinfo_beta.txt" #"level3_beta_trt_misc_n26428x12328.gctx"
+path = "https://s3.amazonaws.com/macchiato.clue.io/builds/LINCS2020/level5/level5_beta_trt_cp_n720216x12328.gctx"
+local_filename = "local_dir/level5_beta_trt_cp_n720216x12328.gctx"
 print("Target file\n", path, "\n", sep="")
 print("The file is being downloaded. Interrupt with [Ctrl+C].\n")
 
