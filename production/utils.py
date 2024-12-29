@@ -34,7 +34,7 @@ class gctx():
 #file.rids
 #file[0:3,[0,1]]
 
-def standardize_dose_unit(pert_dose, pert_dose_unit):
+def standardize_dose_unit(pert_dose, pert_dose_unit): #Deprecated, not used by preprocessing.
     '''pert_dose: the precise dose used in an experiment.
     pert_dose_unit: the unit of the dose.
     
@@ -51,3 +51,19 @@ def standardize_dose_unit(pert_dose, pert_dose_unit):
     else: raise ValueError("Urecognized pert_dose_unit: " + str(pert_dose_unit))
 
     return(multiplier * pert_dose)
+
+
+def clean_doubling_time(doubl_time):
+    '''The doubling time often comes in unconvenient formats,
+    for example "25-35", "< 24" etc. This function deals with this
+    by removing the "<", and in cases where a range is given, it
+    returns the higher number.'''
+    
+    if type(doubl_time) in [float, int]: return doubl_time
+    elif type(doubl_time) == str:
+        if "-" in doubl_time:
+            return float(doubl_time.split("-")[1]) #return the right part of the range
+        if "<" in doubl_time or ">" in doubl_time:
+            return float(doubl_time.replace(">", "").replace("<", ""))
+    else:
+        return doubl_time #likely it was nan
