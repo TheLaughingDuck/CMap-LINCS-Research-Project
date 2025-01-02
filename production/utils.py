@@ -34,7 +34,7 @@ class gctx():
 #file.rids
 #file[0:3,[0,1]]
 
-def standardize_dose_unit(pert_dose, pert_dose_unit): #Deprecated, not used by preprocessing.
+def standardize_dose_unit(pert_dose, pert_dose_unit):
     '''pert_dose: the precise dose used in an experiment.
     pert_dose_unit: the unit of the dose.
     
@@ -67,3 +67,15 @@ def clean_doubling_time(doubl_time):
             return float(doubl_time.replace(">", "").replace("<", ""))
     else:
         return doubl_time #likely it was nan
+
+
+def process_donor_age(age):
+    '''Processes a string specifying age and returns a float.
+    
+    age is typically specified in years, but sometimes in number of
+    weeks or months in the case of small children. If that is the case,
+    return 0.'''
+    
+    if "weeks" in age or "months" in age:
+        return 0
+    else: return float(age)
